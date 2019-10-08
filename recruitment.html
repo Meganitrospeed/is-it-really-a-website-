@@ -8,7 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Recruitment</title>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -48,7 +49,29 @@
 <h3>So you want to apply eh? Follow these steps to enter our recruitment process<h3>
     <h3> These are our requirements</h3>
 </div>
-
+<!-- requirements for joining our corporation -->
+    <div class="container">
+        <ul>
+            <li>At least 30M SP</li>
+            <li>Active in the EU Timezone</li>
+            <li>Passion in destruction</li>
+            <li>A taste for tears</li>
+            <li>*Alts are welcome and encouraged*</li>
+        </ul>
+    </div>
+<form>
+    <div class="form-group">
+        <label for="emailAddress">Email address</label>
+        <input type="email" class="form-control" id="emailAddress" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="EvEusername">EVE-Username</label>
+        <input type="text" class="form-control" id="EvEusername" placeholder="Enter EvE Username">
+    </div>
+    <div class="g-recaptcha" data-sitekey="___clave del sitio____"></div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

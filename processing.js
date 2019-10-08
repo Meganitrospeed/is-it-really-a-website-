@@ -1,1 +1,2 @@
-const user = eveuser:
+const user = eveuser;
+const discordbot = "discordbotisannicedude";
