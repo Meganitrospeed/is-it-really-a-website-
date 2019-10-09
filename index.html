@@ -3,24 +3,24 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="style/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="style/bootstrap.min.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
     <title>It is really us | WH Corporation</title>
 </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>document.body.className += ' fade-out';</script>
 <div class="half-black">
-    <video autoplay muted loop id="background">
-     <source src="./media/thiseve.mp4" type="video/mp4">
+    <video autoplay id="background" loop muted>
+        <source src="./media/thiseve.mp4" type="video/mp4">
     </video>
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent text-dark">
-        <a href="#" class="navbar-brand"><img class="img-fluid" src="media/logo.svg" width="50%" alt="It is really us"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <embed class="img-fluid navbar-brand" src="media/logo.svg" width="300">
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -32,11 +32,11 @@
                     <a class="nav-link" href="recruitment.html">Recruitment</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                       href="#" id="navbarDropdown" role="button">
                         Services
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <a class="dropdown-item" href="https://pathfinder.it-is-really-us.space">Pathfinder</a>
                         <a class="dropdown-item" href="https://seat.it-is-really-us.space">SeAT</a>
                     </div>
@@ -45,17 +45,16 @@
         </div>
     </nav>
     <!-- End of NAV -->
-    <ul class="bg-transparent top text-center jumbotron text-info">
+    <div class="bg-transparent top text-center jumbotron text-info">
         <h1>We are It is really us</h1>
         <h2>This is our home, our brotherhood</h2>
-    </ul>
-  <!-- ACTIVAR*****  <ul class="dropdown-divider"></ul> -->
+    </div>
+    <!-- ACTIVAR*****  <ul class="dropdown-divider"></ul> -->
     <!-- Front Containers -->
-    <ul class="jumbotron bg-transparent text-center text-success">
+    <div class="jumbotron bg-transparent text-center text-success">
         <h1>Proud members of</h1>
         <p><h1>Beyond the Breach</h1></p>
-    </ul>
-
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-xl bg-transparent">
@@ -77,26 +76,25 @@
                 <div class="jumbotron float-left">
                     <h1>LOL</h1>
                 </div>
+            </div>
         </div>
     </div>
 </div>
-</div>
-
 <!-- Optional JavaScript -->
 <script>
-    $(function() {
+    $(function () {
         $('body').removeClass('fade-out');
     });
 </script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+<script crossorigin="anonymous"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script crossorigin="anonymous"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
