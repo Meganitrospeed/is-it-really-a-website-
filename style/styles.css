@@ -48,3 +48,10 @@ body.fade-out {
     opacity: 0;
     transition: none;
 }
+/* Tops ( añade un margen para dar mejor visibilidad ) */
+.top50 { margin-top:50px; }
+.top7 { margin-top:7px; }
+.top10 { margin-top:10px; }
+.top15 { margin-top:15px; }
+.top17 { margin-top:17px; }
+.top30 { margin-top:200px; }
