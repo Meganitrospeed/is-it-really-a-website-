@@ -10,6 +10,9 @@
 .top{
     z-index: 100000;
 }
+.text-side{
+    margin-top:190px;
+}
 .half-rule {
     margin-left: 0;
     text-align: left;

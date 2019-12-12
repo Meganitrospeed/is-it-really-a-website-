@@ -23,5 +23,3 @@ function post_captcha($user_response) {
     // Agregarmos una variable CaptCha
     $res = post_captcha($_POST['g-recaptcha-response']);
     // Fin Agregarmos una variable CaptCha
-
-    %EvE => eve-username
