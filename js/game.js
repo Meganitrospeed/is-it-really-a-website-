@@ -4,13 +4,14 @@ $(document).ready(function(){
     var ctx = canvas.getContext("2d");
     var w = $("#canvas").width();
     var h = $("#canvas").height();
-
     //Lets save the cell width in a variable for easy control
     var cw = 10;
     var d;
     var food;
     var score;
     var level;
+    var color = "white";
+    var deaths = 0;
 
     //Lets create the snake now
     var snake_array; //an array of cells to make up the snake
@@ -52,13 +53,47 @@ $(document).ready(function(){
         //This will create a cell with x/y between 0-44
         //Because there are 45(450/10) positions accross the rows and columns
     }
+////EASTER EGG NO MIRAR
+    var canvas = document.querySelector("canvas"),
+        ctx = canvas.getContext("2d"),
+        rects = [
+            {x: 10, y: 10, w: 200, h: 50},
+            {x: 50, y: 70, w: 150, h: 30}    // etc.
+        ], i = 0, r;
+
+// render initial rects.
+    while(r = rects[i++]) ctx.rect(r.x, r.y, r.w, r.h);
+    ctx.fillStyle = "blue"; ctx.fill();
+
+    canvas.onmousemove = function(e) {
+
+        // important: correct mouse position:
+        var rect = this.getBoundingClientRect(),
+            x = e.clientX - rect.left,
+            y = e.clientY - rect.top,
+            i = 0, r;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // for demo
+
+        while(r = rects[i++]) {
+            // add a single rect to path:
+            ctx.beginPath();
+            ctx.rect(r.x, r.y, r.w, r.h);
+
+            // check if we hover it, fill red, if not fill it blue
+            ctx.fillStyle = ctx.isPointInPath(x, y) ? "red" : "blue";
+            ctx.fill();
+        }
+
+    };
+    ////FINEASTER EGG NO MIRAR
 
     //Lets paint the snake now
     function paint()
     {
         //To avoid the snake trail we need to paint the BG on every frame
-        //Lets paint the canvas now
-        ctx.fillStyle = "white";
+        //Lets paint the canvas no
+        ctx.fillStyle = color;
         ctx.fillRect(0, 0, w, h);
         ctx.strokeStyle = "black";
         ctx.strokeRect(0, 0, w, h);
@@ -83,6 +118,7 @@ $(document).ready(function(){
         if(nx == -1 || nx == w/cw || ny == -1 || ny == h/cw || check_collision(nx, ny, snake_array))
         {
             //restart game
+            deaths++
             init();
             //Lets organize the code a bit now.
             return;
@@ -121,8 +157,12 @@ $(document).ready(function(){
         //Lets paint the score
         var score_text = "Score: " + score;
         var level_text = "Level: " + level;
+        var color_text = "Color: " + color;
+        var death_counter = "You died: " +deaths;
         ctx.fillText(score_text, 5, h-5);
         ctx.fillText(level_text, 60, h-5);
+        ctx.fillText(color_text, 100, h-5);
+        ctx.fillText(death_counter, 170, h-5)
     }
 
     //Lets first create a generic function to paint cells
@@ -142,10 +182,34 @@ $(document).ready(function(){
         {
             if(array[i].x == x && array[i].y == y)
                 return true;
+
         }
         return false;
     }
+    var elem = document.getElementById('canvas'),
+        elemLeft = elem.offsetLeft,
+        elemTop = elem.offsetTop,
+        context = elem.getContext('2d'),
+        elements = [];
+    elem.addEventListener('click', function(event) {
+        var x = event.pageX - elemLeft,
+            y = event.pageY - elemTop;
+        console.log(x, y);
+        elements.forEach(function(element) {
+            if (y > element.top && y < element.top + element.height && x > element.left && x < element.left + element.width) {
+                alert('Felicidades has descubierto un EasterEgg');
+            }
+        });
 
+    }, false);
+    // Add element.
+    elements.push({
+        colour: '#05EFFF',
+        width: 150,
+        height: 100,
+        top: 20,
+        left: 15
+    });
     //Lets add the keyboard controls now
     $(document).keydown(function(e){
         var key = e.which;
@@ -155,6 +219,11 @@ $(document).ready(function(){
         else if(key == "39" && d != "left") d = "right";
         else if(key == "40" && d != "up") d = "down";
         //The snake is now keyboard controllable
+
+        //Color Picking
+        if(key == "49") color = "black";
+        else if (key == "50") color = "red";
+        else if (key == "51") color = "yellow";
     })
 
 
