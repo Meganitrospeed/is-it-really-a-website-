@@ -1,14 +1,30 @@
 #background {
+    background: rgba(1, 1, 1, 0.7   );
     position: fixed;
     right: 0;
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
     z-index: -1;
+    opacity: 100%;
+
 ;
 }
 .top{
     z-index: 100000;
+}
+.edit {
+    margin-left: 1em;
+}
+
+#update-button {
+    display: none;
+}
+
+#cancel-button {
+    margin-top: -2.4em;
+    margin-left: 5em;
+    display: none;
 }
 .text-side{
     margin-top:190px;
@@ -19,7 +35,7 @@
     width: 50%;
 }
 .half-black {
-    background: rgba(1, 1, 1, 0.7);
+    background: rgba(1, 1, 1, 1);
 }
 .vidContain {
     width:300px; height:200px;
