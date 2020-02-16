@@ -1,17 +1,47 @@
 window.onload = initialize;
-
 const ADD = "add";
 const UPDATE = "update";
 var operation = ADD;
 var keyBicycleToEdit;
+var logstatus = 0;
+var uid = "";
 function initialize() {
     initializeFirebase();
-
+    checkstatus();
+    document.getElementById("logout").addEventListener("click", doLogout);
     document.getElementById("cancel-button").addEventListener("click", resetForm);
 
     captureSubmitEventWhenAddingItem();
 
     downloadBicycles();
+}
+
+function doLogout (event){
+    event.preventDefault();
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        checkstatus();
+    }).catch(function(error) {
+        // An error happened.
+        console.log(error);
+    });
+}
+
+function checkstatus (){
+    firebase.auth().onAuthStateChanged(function(user) {
+        event.preventDefault();
+        if (user) {
+            console.log("Tiene la sesion iniciada")
+            //Obtenemos la UID del usuario para poder trabajar con ella mas tarde :)
+            console.log("Authenticated user with uid:", user.uid);
+            var logstatus = 1;
+
+            uid = user.uid;
+        } else {
+            console.log("Has cerrado sesioN")
+            var logstatus = 0;
+        }
+    });
 }
 
 function resetForm() {
@@ -31,14 +61,17 @@ function addOrUpdateItem(event) {
     var formItems = event.target;
 
     if (operation == ADD) {
-        var refBicycles = firebase.database().ref("BicycleStore/bicycles");
-        refBicycles.push({
-            usuario: formItems.usuario.value,
-            rango: formItems.rango.value,
-            tmeses: formItems.tmeses.value
-        });
-        location.reload();
-    } else {
+        if (uid == "rnoV3ffjqAQp64AYkMb0vR8OuXS2") {
+            var refBicycles = firebase.database().ref("BicycleStore/bicycles");
+            refBicycles.push({
+                usuario: formItems.usuario.value,
+                rango: formItems.rango.value,
+                tmeses: formItems.tmeses.value
+
+            })
+            location.reload();
+        };
+    } else if (uid == "rnoV3ffjqAQp64AYkMb0vR8OuXS2") {
         var refBicycles = firebase.database().ref("BicycleStore/bicycles/" + keyBicycleToEdit);
 
         refBicycles.update({
@@ -46,11 +79,14 @@ function addOrUpdateItem(event) {
             rango: formItems.rango.value,
             tmeses: formItems.tmeses.value
         });
-        location.reload();
         document.getElementById("update-button").style.display = "none";
         document.getElementById("cancel-button").style.display = "none";
         document.getElementById("add-button").style.display = "block";
         operation = ADD;
+        location.reload();
+    } else {
+        console.log("No tienes permisos para añadir o editar registros");
+        alert("No tienes permisos, logeate para editar si eres un usuario con permisos")
     }
 
     formItems.reset();

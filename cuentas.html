@@ -21,21 +21,21 @@
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-analytics.js"></script>
 
-    <script src="js/bicycles.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
+
+
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-
+    <script src="js/bicycles.js"></script>
 
     <!--
     ==========================================
     AUTHENTICATION IS HERE
     ==========================================
     -->
-
-        <script src="js/login.js"></script>
-
 
 
 
@@ -87,6 +87,12 @@
                         <a class="dropdown-item" href="http://seat.beyond-the-breach.space/">SeAT</a>
                         <a class="dropdown-item" href="cuentas.html">Admin</a>
                     </div>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link border-left float-left" id="logout">Logout</a>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link border-left float-left" id="login" href="login.html">Login</a>
                 </li>
             </ul>
         </div>
