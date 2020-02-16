@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style/styles.css">
+    <script src="js/login.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyD2qIy31Yoj8SBpqo-ov1VJYyXDbdQUKpw",
+            authDomain: "para-lnd-e7e08.firebaseapp.com",
+            databaseURL: "https://para-lnd-e7e08.firebaseio.com",
+            projectId: "para-lnd-e7e08",
+            storageBucket: "para-lnd-e7e08.appspot.com",
+            messagingSenderId: "413249981469",
+            appId: "1:413249981469:web:76298d47167d54a5e84af4",
+            measurementId: "G-3N4K9KLEJY"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+</head>
+<body>
+<form id="form-login" method="get">
+    <div class="imgcontainer">
+        <img src="media/BTB_2.gif" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+        <label for="email" id="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" id="email" name="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="psw" name="psw" required>
+
+        <button type="submit">Login</button>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+</form>
+</body>
+</html>
