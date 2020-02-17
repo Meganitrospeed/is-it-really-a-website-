@@ -61,6 +61,7 @@ function addOrUpdateItem(event) {
     var formItems = event.target;
 
     if (operation == ADD) {
+
         if (uid == "rnoV3ffjqAQp64AYkMb0vR8OuXS2") {
             var refBicycles = firebase.database().ref("BicycleStore/bicycles");
             refBicycles.push({
@@ -86,9 +87,8 @@ function addOrUpdateItem(event) {
         location.reload();
     } else {
         console.log("No tienes permisos para añadir o editar registros");
-        alert("No tienes permisos, logeate para editar si eres un usuario con permisos")
+        alert("No tienes permisos, logeate para editar si eres un usuario con permisos");
     }
-
     formItems.reset();
 }
 
@@ -173,13 +173,19 @@ function editBicycle(event) {
 }
 
 function deleteBicycle(event) {
-    var buttonClicked = event.target;
+        if (uid == "rnoV3ffjqAQp64AYkMb0vR8OuXS2") {
+            var buttonClicked = event.target;
 
-    var keyBicycleToDelete = buttonClicked.getAttribute("data-bicycle");
-    var refBicycleToDelete = firebase.database().ref("BicycleStore/bicycles/" + keyBicycleToDelete);
-    refBicycleToDelete.remove();
-    location.reload();
-}
+            var keyBicycleToDelete = buttonClicked.getAttribute("data-bicycle");
+            var refBicycleToDelete = firebase.database().ref("BicycleStore/bicycles/" + keyBicycleToDelete);
+            refBicycleToDelete.remove();
+            location.reload()
+        } else {
+            console.log("No tienes permisos para borrar, pierdete!");
+            alert("No tienes permisos para ejecutar esta accion");
+        }
+};
+
 
 function initializeFirebase() {
     // Your web app's Firebase configuration
