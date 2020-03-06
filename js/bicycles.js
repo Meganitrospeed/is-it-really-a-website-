@@ -44,6 +44,20 @@ function checkstatus (){
     });
 }
 
+function validation (){
+    var fusuario = document.getElementById('color').value;
+    var frango = document.getElementById('model').value;
+    var ftmeses = document.getElementById('stock').value;
+    if ((fusuario.length == 0) | (frango.length == 0) | (ftmeses.length == 0))
+    {
+        alert("Name must be filled out");
+        return false;
+    }
+    if(isNaN(ftmeses)){
+        alert("Meses is not a number");
+    }
+}
+
 function resetForm() {
     document.getElementById("update-button").style.display = "none";
     document.getElementById("cancel-button").style.display = "none";
@@ -52,10 +66,12 @@ function resetForm() {
 }
 
 function captureSubmitEventWhenAddingItem() {
-    document.getElementById("form-bicycle").addEventListener("submit", addOrUpdateItem);
+    document.getElementById("form-bicycle").addEventListener("submit", addOrUpdateItem,);
+
 }
 
 function addOrUpdateItem(event) {
+    validation()
     event.preventDefault();
 
     var formItems = event.target;
@@ -74,7 +90,7 @@ function addOrUpdateItem(event) {
         };
     } else if (uid == "rnoV3ffjqAQp64AYkMb0vR8OuXS2") {
         var refBicycles = firebase.database().ref("BicycleStore/bicycles/" + keyBicycleToEdit);
-
+        validation()
         refBicycles.update({
             usuario: formItems.usuario.value,
             rango: formItems.rango.value,
