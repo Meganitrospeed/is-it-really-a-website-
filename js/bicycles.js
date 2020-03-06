@@ -5,6 +5,8 @@ var operation = ADD;
 var keyBicycleToEdit;
 var logstatus = 0;
 var uid = "";
+let file = formItem.image.files[0];
+let fileName = file.name;
 function initialize() {
     initializeFirebase();
     checkstatus();
