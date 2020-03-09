@@ -83,19 +83,23 @@ function addOrUpdateItem(event) {
 
         if (uid == "rnoV3ffjqAQp64AYkMb0vR8OuXS2") {
             var refBicycles = firebase.database().ref("BicycleStore/bicycles");
-            const formItem = document.getElementById("form-bicycle");
-            let file = formItem.image.files[0];
+            const formItems = document.getElementById("form-bicycle");
+            let file = formItems.image.files[0];
             let fileName = file.name;
+
+            let user = formItems.usuario.value;
+            let rank = formItems.rango.value;
+            let tMonth = formItems.tmeses.value;
 
             let ref = firebase.storage().ref().child(fileName);
             ref.put(file).then(function (snapshot) {
                 console.log('Uploaded a blob or file!');
 
                 ref.getDownloadURL().then(function (url) {
-                    refItem.push({
-                        type: formItem.type.value,
-                        stock: formItem.stock.value,
-                        price: formItem.price.value,
+                    refBicycles.push({
+                        usuario: user,
+                        rango: rank,
+                        tmeses: tMonth,
                         image_url: url
                     });
                 }).catch(function (error) {
