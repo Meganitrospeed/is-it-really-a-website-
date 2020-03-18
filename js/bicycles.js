@@ -6,6 +6,7 @@ var keyBicycleToEdit;
 var logstatus = 0;
 var uid = "";
 const formItem = document.getElementById("form-bicycle");
+
 let file = formItem.image.files[0];
 let fileName = file.name;
 function initialize() {
@@ -75,6 +76,7 @@ function captureSubmitEventWhenAddingItem() {
 
 function addOrUpdateItem(event) {
     validation();
+
     event.preventDefault();
 
     var formItems = event.target;
