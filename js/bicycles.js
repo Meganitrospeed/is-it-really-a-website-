@@ -5,6 +5,8 @@ var operation = ADD;
 var keyBicycleToEdit;
 var logstatus = 0;
 var uid = "";
+const formItem = document.getElementById("form-bicycle");
+
 let file = formItem.image.files[0];
 let fileName = file.name;
 function initialize() {
@@ -73,7 +75,8 @@ function captureSubmitEventWhenAddingItem() {
 }
 
 function addOrUpdateItem(event) {
-    validation()
+    validation();
+
     event.preventDefault();
 
     var formItems = event.target;
@@ -82,13 +85,36 @@ function addOrUpdateItem(event) {
 
         if (uid == "rnoV3ffjqAQp64AYkMb0vR8OuXS2") {
             var refBicycles = firebase.database().ref("BicycleStore/bicycles");
+            const formItems = document.getElementById("form-bicycle");
+            let file = formItems.image.files[0];
+            let fileName = file.name;
+
+            let user = formItems.usuario.value;
+            let rank = formItems.rango.value;
+            let tMonth = formItems.tmeses.value;
+
+            let ref = firebase.storage().ref().child(fileName);
+            ref.put(file).then(function (snapshot) {
+                console.log('Uploaded a blob or file!');
+
+                ref.getDownloadURL().then(function (url) {
+                    refBicycles.push({
+                        usuario: user,
+                        rango: rank,
+                        tmeses: tMonth,
+                        image_url: url
+                    });
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            });
             refBicycles.push({
                 usuario: formItems.usuario.value,
                 rango: formItems.rango.value,
                 tmeses: formItems.tmeses.value
 
-            })
-            location.reload();
+            });
+            //location.reload();
         };
     } else if (uid == "rnoV3ffjqAQp64AYkMb0vR8OuXS2") {
         var refBicycles = firebase.database().ref("BicycleStore/bicycles/" + keyBicycleToEdit);
@@ -124,6 +150,10 @@ function showBicycles(snap) {
 
     for (var key in data) {
         rows += '<tr>' +
+            "<td>" +
+            '<img data-bicycle-id="' + key + '" class="img-fluid imgOnDB" src="' +
+            data[key].image_url + '" alt="image"/>' +
+            "</td>" +
             '<td>' + data[key].usuario + '</td>' +
             '<td>' + data[key].rango + '</td>' +
             '<td>' + data[key].tmeses + '</td>' +
@@ -145,7 +175,7 @@ function showBicycles(snap) {
         $('#addRow').on( 'click', function () {
             t.row.add( [
                 data[key].usuario,
-                    data[key].rango,
+                data[key].rango,
                 data[key].tmeses,
             ] ).draw( false );
         } );
@@ -191,17 +221,17 @@ function editBicycle(event) {
 }
 
 function deleteBicycle(event) {
-        if (uid == "rnoV3ffjqAQp64AYkMb0vR8OuXS2") {
-            var buttonClicked = event.target;
+    if (uid == "rnoV3ffjqAQp64AYkMb0vR8OuXS2") {
+        var buttonClicked = event.target;
 
-            var keyBicycleToDelete = buttonClicked.getAttribute("data-bicycle");
-            var refBicycleToDelete = firebase.database().ref("BicycleStore/bicycles/" + keyBicycleToDelete);
-            refBicycleToDelete.remove();
-            location.reload()
-        } else {
-            console.log("No tienes permisos para borrar, pierdete!");
-            alert("No tienes permisos para ejecutar esta accion");
-        }
+        var keyBicycleToDelete = buttonClicked.getAttribute("data-bicycle");
+        var refBicycleToDelete = firebase.database().ref("BicycleStore/bicycles/" + keyBicycleToDelete);
+        refBicycleToDelete.remove();
+        location.reload()
+    } else {
+        console.log("No tienes permisos para borrar, pierdete!");
+        alert("No tienes permisos para ejecutar esta accion");
+    }
 };
 
 
